@@ -1,0 +1,32 @@
+/* banner swiper */
+
+#main-swiper-container {
+	width: 100%;
+}
+
+#main-swiper-container .swiper-slide {
+	width: 100%;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+}
+
+#main-swiper-container .swiper-slide .text-area {
+	position: absolute;
+	z-index: 99;
+	bottom: 28%;
+	left: 14%;
+}
+
+
+#main-swiper-container .swiper-slide .text-area p {
+	font-size: 56px;
+	font-family: "MicrosoftYaHei";
+	font-weight: normal;
+	color: #FFFFFF;
+	line-height: 58px;
+	text-shadow: 0px 0px 8px #0A162D;
+	/* transition: all 0.5 ease-in-out 0.4s; */
+	animation-duration: 5s;
+}
+

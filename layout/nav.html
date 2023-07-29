@@ -1,0 +1,127 @@
+<div class="header">
+    <div class="mobile-nav-slide">
+        <i class="icon iconfont btn-show" onclick="NavContext.slideNav(true)">&#xe85f;</i>
+        <i class="icon iconfont btn-hide" style="display: none;" onclick="NavContext.slideNav(false)">&#xe6b8;</i>
+    </div>
+    
+    <h1 class="logo">
+        <img src="/images/logo.png" alt="">
+        <label>大连恒锐物证司法鉴定所</label>
+    </h1>
+    <ul class="tabs" id="navMenuBox">
+        <li class="tabs-item"><a href="../index.html">首页</a></li>
+        <!-- <li class="tabs-item"><a href="javaScript:window.open(trialURL);">Trial</a></li> -->
+        
+        <li class="tabs-item drop"><a href="javascript:void(0);" class="unlink active">机构概况</a>
+            <div class="drop-down">
+                <div class="drop-down-item">
+                    <ul class="part part1">
+                        <li><a href="../companyProfile/intro.html">机构简介</a></li>
+                        <li><a href="../companyProfile/qualifications.html">机构资质</a></li>
+                        <li><a href="../companyProfile/show.html">机构展示</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="tabs-item drop"><a href="javascript:void(0);" class="unlink">鉴定范围</a>
+            <div class="drop-down animated  animate__backInDown">
+                <div class="drop-down-item">
+                    <ul class="part part1">
+                        <li><a href="../identifyRange/document.html">文书鉴定</a></li>
+                        <li><a href="../identifyRange/mark.html">痕迹鉴定</a></li>
+                        <li><a href="../identifyRange/footprint.html">足迹鉴定</a></li>
+                        <li><a href="../identifyRange/image.html">图像鉴定</a></li>
+                        <li><a href="../identifyRange/soundRecording.html">录音资料鉴定</a></li>
+                        <li><a href="../identifyRange/electronicData.html">电子数据鉴定</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="tabs-item drop"><a href="javascript:void(0);" class="unlink">足迹鉴定</a>
+            <div class="drop-down">
+                <div class="drop-down-item">
+                    <ul class="part part1">
+                        <li><a href="../identifyFootprint/footprint.html">足迹鉴定</a></li>
+                        <li><a href="../identifyFootprint/content.html">鉴定内容</a></li>
+                        <li><a href="../identifyFootprint/device.html">鉴定设备</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="tabs-item drop"><a href="javascript:void(0);" class="unlink">鉴定指南</a>
+            <div class="drop-down">
+                <div class="drop-down-item">
+                    <ul class="part part1">
+                        <li><a href="../identifyGuide/flowpath.html">鉴定流程</a></li>
+                        <li><a href="../identifyGuide/notice.html">鉴定须知</a></li>
+                        <li><a href="../identifyGuide/requiredDocumentation.html">鉴定必备材料</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="tabs-item"><a href="../law/law.html">法律法规</a>
+            
+        </li>
+        <li class="tabs-item"><a href="../news/news.html">新闻动态</a>
+        </li>
+        <li class="tabs-item drop"><a href="javascript:void(0);" class="unlink">关于我们</a>
+            <div class="drop-down">
+                <div class="drop-down-item">
+                    <ul class="part part1">
+                        <li><a href="../aboutUs/contact.html">联系我们</a></li>
+                        <li><a href="../aboutUs/joinUs.html">加入我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<script>
+    //移动端处理
+    let NavContext = {
+        navSlideStatus: false,
+        slideBtnShowEle: document.querySelector('.mobile-nav-slide').querySelector('.btn-show'),
+        slideBtnHideEle: document.querySelector('.mobile-nav-slide').querySelector('.btn-hide'),
+        slideNav(targetStatus){
+            if(targetStatus){
+                $(this.slideBtnShowEle).hide()
+                $(this.slideBtnHideEle).show()
+            }else{
+                $(this.slideBtnShowEle).show()
+                $(this.slideBtnHideEle).hide()
+            }
+            this.navSlideStatus = targetStatus
+            $("#navMenuBox").slideToggle(0)
+        },
+        navLinkTrigger(){
+            if(!IsIphone){//wyft todo
+                $(".tabs-item > a.unlink").on("touchstart", function(event){
+                    event.preventDefault()
+                    let a = $(this).parent().find('li a')
+                    if(a.length>0){
+                        $(this).parent().siblings('.tabs-item').find(".unlink").removeClass('active')
+                        $(this).addClass('active')
+                    }
+                })
+            }else{
+                $(".tabs-item > a.unlink").on("click", function(event){
+                    event.preventDefault()
+                    let a = $(this).parent().find('li a')
+                    if(a.length>0){
+                        if(IsMobile){
+                            $(this).parent().siblings('.tabs-item').find(".unlink").removeClass('active')
+                            $(this).addClass('active')
+                        }else{
+                            location.href = a[0].href
+                        }
+                    }
+                })
+            }
+        }
+
+    }
+    
+    $(function(){
+        NavContext.navLinkTrigger()
+    })
+</script>
